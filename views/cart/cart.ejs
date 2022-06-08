@@ -1,0 +1,85 @@
+<%- layout('./layouts/boilerplate') %>
+
+    <div class="container-md" style="margin-top: 75px; margin-bottom: 49px;">
+        <h1 class="display-6 cart-heading" style="font-weight: 350;">My Cart</h1>
+    </div>
+    <div class="row mx-auto" style="margin-top: 20px;">
+        <div class="col-xl-6">
+            <%for(let cartProduct of cartProducts){%>
+                <div class="remove-card card mb-4 p-3 mx-auto cart-card" style="width: 35rem;">
+                    <div class="d-flex">
+                        <div class="mt-3">
+                            <img src="<%=cartProduct.product.image%>" class="rounded-start product-images" width="180px">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <%=cartProduct.product.name%>
+                            </h5>
+                            <p class="card-text">
+                                <%=cartProduct.product.desc%>
+                            </p>
+                            <p class="fw-bold">Qty : </p>
+                            <div class="d-flex">
+                                <div product-id="<%=cartProduct.product._id%>" class="quantities d-flex justify-content-between 
+                                    border-top border-bottom border-info rounded bg-info" style="box-sizing:content-box;
+                                    width: 26%;">
+                                    <button class="btn btn-sm btn-info text-white">+</button>
+                                    <span class="text-center bg-white w-50 pt-1" style="box-shadow: inset 1.2px -1.2px 2px #ccc, inset -1.2px 1.2px 2px #ccc;"><%=cartProduct.quantity%></span>
+                                    <button class="btn btn-sm btn-info text-white" style="padding-right: 9.8px; padding-left: 9.8px;">-</button>
+                                </div>
+                                <form action="/user/<%=cartProduct.product._id%>/delete?_method=DELETE" method="post">
+                                    <button type="submit" class="btn btn-sm btn-danger ms-4">Remove From Cart</button>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <%}%>
+        </div>
+        <div class="col-xl-6 mb-5">
+            <ul class="list-group mx-auto" style="width: 35rem;">
+                <%for(let cartProduct of cartProducts){%>
+                    <li class="remove-item list-group-item d-flex justify-content-between">
+                        <div class="d-flex w-75 justify-content-between">
+                            <p class="fw-bold cart-text-1">
+                                <%=cartProduct.product.name%>
+                            </p>
+                            <p class="times">x
+                                <%=cartProduct.quantity%>
+                            </p>
+                            <p class="ms-2"> = </p>
+                        </div>
+                        <div class="w-25 ms-4 d-flex justify-content-around">
+                            <p class="fw-bold cart-text-1">
+                                <%=cartProduct.product.newPrice.toLocaleString('en-IN', { style: 'currency', currency: 'INR'})%>/-</p>
+                        </div>
+                    </li>
+                    <%}%>
+                        <%if(totalAmount){%>
+                            <li class="final list-group-item text-end">
+                                <p class="d-inline me-5 fst-italic cart-text">Net Amount :</p>
+                                <p class="d-inline fw-bold amount cart-text">
+                                    <%=totalAmount.toLocaleString('en-IN', { style: 'currency', currency: 'INR'})%>/-</p>
+                            </li>
+                            <%}%>
+            </ul>
+            <%if(totalAmount){%>
+                <div class="final text-center">
+                    <button productInfo="<%=productInfo%>" netAmount="<%=totalAmount%>" username="<%=currentUser.username%>" email="<%=currentUser.email%>" type="submit" id="rzp-button1" class="btn btn-success btn-md mt-3">
+                    Proceed to Checkout
+                </button>
+                </div>
+                <%}%>
+        </div>
+    </div>
+
+
+    <script src="/js/cartCheckout.js"></script>
+    <style>
+        @media screen and (max-width: 584px) {
+            body {
+                width: 584px;
+            }
+        }
+    </style>

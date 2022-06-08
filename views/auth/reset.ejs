@@ -1,0 +1,24 @@
+<%- layout('./layouts/boilerplate') %>
+
+
+    <div class="row mx-3" style="margin-top: 130px;">
+        <div class="col-xxl-4 col-xl-5 col-lg-6 col-md-7 col-sm-8 mx-auto">
+            <%- include('../partials/flash.ejs') %>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 20px; margin-bottom: 288px;">
+        <div class="col-xxl-4 col-xl-5 col-lg-6 col-md-7 col-sm-8 mx-auto px-5">
+            <form action="/reset" method="post" novalidate class="needs-validation">
+                <div class="mb-3">
+                    <label for="email" class="form-label fs-5 text-white">Please enter your registered email address to search for your account.</label>
+                    <input type="email" id="email" name="email" class="form-control py-2 mt-3" placeholder="Email Address" required>
+                </div>
+                <div class="mb-3 mt-4 text-end">
+                    <a href="/login" class="btn index-button me-2 px-3">Cancel</a>
+                    <form action="/reset" method="post">
+                        <button type="submit" class="btn index-button px-3">Search</button>
+                    </form>
+                </div>
+            </form>
+        </div>
+    </div>

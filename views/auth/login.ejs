@@ -1,0 +1,36 @@
+<%- layout('./layouts/boilerplate') %>
+
+    <div class="row mx-3" style="margin-top: 90px; margin-bottom: 133px;">
+        <div class="col-xxl-4 col-xl-5 col-lg-6 col-md-7 col-sm-8 mx-auto">
+            <%- include('../partials/flash.ejs') %>
+        </div>
+        <div class="col-lg-9 mx-auto">
+            <h1 class="display-6 text-center sign-heading">Sign in</h1>
+        </div>
+        <div class="col-xxl-4 col-xl-5 col-lg-6 col-md-7 col-sm-8 mx-auto mt-3">
+            <div class="border border-2 p-4 bg-light shadow-sm rounded-3">
+                <form action="/login" method="post" class="needs-validation" novalidate>
+                    <div class="mb-3">
+                        <label class="form-label sign-text" for="username">Username: </label>
+                        <input class="form-control" type="text" name="username" id="username" placeholder="Username" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label sign-text" for="password">Password: </label>
+                        <input class="form-control" type="password" name="password" id="password" placeholder="Password" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <a href="/reset" class="float-end mt-1">Forgot your password?</a>
+                    </div>
+                    <div class="mt-4">
+                        <button type="submit" class="btn index-button show-button">Sign in</button>
+                        <p class="mt-2 text-center">Don't have an account yet?</p>
+                        <p class="text-center" style="margin-top: -15px;"><a href="/register">Sign Up</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>

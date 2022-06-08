@@ -1,0 +1,97 @@
+<nav class="navbar fixed-top navbar-expand-md navbar-dark">
+    <div class="container-lg">
+        <a class="navbar-brand py-0 navbar-nav" style="font-family: 'Lobster Two'; color: #3a0ca3;" href="/products">
+            <div class="d-flex">
+                <span class="me-1 mt-1"><i class="fs-2 fas fa-shopping-basket text-white"></i></span>
+                <h1 class="d-inline fs-2 text-white">ShopStop</h1>
+            </div>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                <%if(!currentUser){%>
+                    <li class="nav-item">
+                        <a class="nav-link active nav-home" href="/">Home</a>
+                    </li>
+                    <%}%>
+                        <%if(currentUser && currentUser.role === 'seller'){%>
+                            <li class="nav-item">
+                                <a class="nav-link active nav-homes" href="/products/new">Add New Product</a>
+                            </li>
+                            <%}%>
+            </ul>
+        </div>
+        <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                <%if (!currentUser){%>
+                    <li class="nav-item"><a class="nav-link active" href="/login">Sign in</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/register">Sign up</a></li>
+                    <%}else{%>
+                        <li class="nav-item">
+                            <p class="nav-link active nav-para d-flex">Hi,
+                                <%=currentUser.username%>
+                            </p>
+                        </li>
+                        <li class="nav-item mt-1 mx-3">
+                            <div class="btn-group d-flex align-items-center">
+                                <span data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user-circle fs-2 profile"></i>
+                            </span>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item" href="/logout">Logout</a>
+                                    </li>
+                                    <li>
+                                        <button class="dropdown-item text-black delete-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        Delete Account
+                                    </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/user/myorders">My Orders</a>
+                        </li>
+                        <li class="nav-item">
+                            <div class="cart position-relative mt-2 mx-3">
+                                <a href="/user/cart">
+                                    <i class="fas fa-shopping-cart fs-5" style="color: #8ac9fc"></i>
+                                    <span class="cart-count position-absolute badge rounded-1 bg-danger">
+                                    <%if(currentUser.totalCartProducts>99){%>
+                                        99+
+                                    <%}else{%>
+                                        <%=currentUser.totalCartProducts%>
+                                    <%}%>                            
+                                    <span class="visually-hidden">unread messages</span>
+                                    </span>
+                                </a>
+                            </div>
+                        </li>
+                        <%}%>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- modal code -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete Account</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete your account? This change is irreversible!!
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success btn-md" style="width: 80px;" data-bs-dismiss="modal">Cancel</button>
+                <form action="/user/delete?_method=DELETE" method="post">
+                    <button type="submit" class="btn btn-danger btn-md" style="width: 80px;">Yes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

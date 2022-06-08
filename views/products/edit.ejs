@@ -1,0 +1,72 @@
+<%- layout('./layouts/boilerplate') %>
+
+    <div class="row container mx-auto" style="margin: 70px 0px;">
+        <div class="col-lg-12">
+            <h1 class="display-6 text-center new-product-heading">Edit your product</h1>
+        </div>
+        <div class="col-xl-6 col-lg-7 col-md-8 mx-auto mt-3">
+            <form action="/products/<%=product._id%>?_method=PATCH" method="post">
+                <div>
+                    <label for="name" class="form-label new-product-heading product-heading">Product Name: </label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Name" required value="<%=product.name%>">
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="mt-2">
+                    <label for="image" class="form-label new-product-heading product-heading">Image URL: </label>
+                    <input type="text" class="form-control" id="image" name="image" placeholder="URL" required value="<%=product.image%>">
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="mt-2">
+                    <label for="category" class="form-label new-product-heading product-heading">Category: </label>
+                    <select class="form-select" aria-label="Default select example" id="category" name="category" required>
+                    <option>Select product category</option>
+                    <option value="gadget">Electronics and Gadgets</option>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <option value="fashion">Fashion</option>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <option value="accessory">Accessories</option>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </select>
+                </div>
+                <div class="mt-2">
+                    <label for="oldPrice" class="form-label new-product-heading product-heading">Original price: </label>
+                    <div class="input-group">
+                        <span class="input-group-text">&#8377;</span>
+                        <input type="text" class="form-control" id="oldPrice" name="oldPrice" placeholder="Original price" value="<%=product.oldPrice%>" style="border-top-right-radius: 5px; border-bottom-right-radius: 5px;">
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-2">
+                    <label for="newPrice" class="form-label new-product-heading product-heading">Discounted price: </label>
+                    <div class="input-group">
+                        <span class="input-group-text">&#8377;</span>
+                        <input type="text" class="form-control" id="newPrice" name="newPrice" placeholder="Discounted price" value="<%=product.newPrice%>" style="border-top-right-radius: 5px; border-bottom-right-radius: 5px;">
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-2">
+                    <label for="desc" class="form-label new-product-heading product-heading">Product description: </label>
+                    <textarea class="form-control" name="desc" id="desc" rows="4" placeholder="Product info..." required><%=product.desc%></textarea>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <button type="submit" class="btn index-button show-button mt-3">Update Product</button>
+            </form>
+        </div>
+
+    </div>

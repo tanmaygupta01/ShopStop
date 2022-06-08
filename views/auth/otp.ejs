@@ -1,0 +1,22 @@
+<%- layout('./layouts/boilerplate') %>
+
+
+
+    <div class="row mx-3" style="margin-top: 100px;">
+        <div class="col-xxl-4 col-xl-5 col-lg-6 col-md-7 col-sm-8 mx-auto">
+            <%- include('../partials/flash.ejs') %>
+        </div>
+    </div>
+    <div class="row mx-3" style="margin-top: 10px; margin-bottom: 356px;">
+        <div class="col-xxl-3 col-xl-4 col-lg-5 col-md-6 col-sm-8 mx-auto">
+            <form action="/reset/otpcheck" method="post">
+                <div class="mb-3 text-center">
+                    <label for="otp" class="form-label text-center mb-3 text-white">Please enter the 6 digit OTP sent to <%=email%>.</label>
+                    <input type="password" id="otp" name="otp" class="form-control py-2" placeholder="Enter OTP..." autofocus>
+                </div>
+                <div class="mb-3 text-end">
+                    <button type="submit" class="btn index-button px-3">Send</button>
+                </div>
+            </form>
+        </div>
+    </div>

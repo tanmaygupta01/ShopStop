@@ -1,0 +1,299 @@
+body {
+    /* background-color: hsla(347, 17%, 80%, 0.906); */
+    /* background-color: #022b3a; */
+    /* background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c); */
+    /* background: linear-gradient(to bottom, #ffffcc 0%, #ccffff 100%); */
+    background: rgb(9, 96, 121);
+    background: linear-gradient(90deg, rgba(9, 96, 121, 0.6758053563222164) 11%, rgba(13, 0, 36, 1) 46%, rgba(76, 147, 162, 0.24163168685442926) 87%);
+}
+
+.navbar {
+    /* background-color: #a2dae5; */
+    background-color: black;
+}
+
+.nav-link {
+    margin: 0px 11px;
+    font-size: 1.1rem;
+    font-weight: 400;
+    border-radius: 7px;
+    transition: 200ms;
+    font-family: monospace;
+}
+
+.nav-home {
+    font-size: 1.2rem;
+}
+
+.nav-homes {
+    font-size: 1.2rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.621);
+}
+
+.nav-para:hover {
+    background-color: rgba(255, 255, 255, 0.621);
+}
+
+.cart:hover {
+    cursor: pointer;
+}
+
+.cart-count {
+    font-size: 0.53rem;
+    top: -1px;
+}
+
+.profile {
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.26);
+    cursor: pointer;
+    color: #8ac9fc;
+}
+
+.dropdown-item:hover {
+    background-color: rgba(104, 112, 103, 0.889);
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: red;
+}
+
+.carousel-images {
+    height: 40vh;
+    border-radius: 10px;
+}
+
+.headings {
+    font: 700 48px 'Bad Script';
+    font-weight: bold;
+    color: #bdb2ff;
+}
+
+.corners {
+    border-top-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.scalecard {
+    box-shadow: 1px 1px 2px #ccc, -1px -1px 2px #ccc !important;
+    transition: 300ms;
+    background-color: hwb(0 100% 0% / 0.899);
+}
+
+.scalecard:hover {
+    background-color: #cdeac0;
+    transform: scale(1.02) !important;
+}
+
+.product-images {
+    border-radius: 10px;
+}
+
+.product-card {
+    background-color: hwb(0 100% 0% / 0.899);
+}
+
+.index-button {
+    padding: 8px 13px;
+    font: 500 15px 'Roboto';
+    background-color: #b7e4c7;
+    color: #014f86;
+    transition: 120ms 80ms;
+}
+
+.index-button:hover {
+    cursor: pointer;
+    transform: translateY(-0.15rem);
+    box-shadow: 0px 4px 6px #ccc;
+    background-color: #4cc9f0;
+    color: white;
+}
+
+.index-button:focus {
+    transform: none;
+    box-shadow: none;
+}
+
+.fas.fa-heart {
+    color: red;
+}
+
+.card-title {
+    color: #772e25;
+    text-transform: uppercase;
+}
+
+.desc {
+    color: #545775;
+    font-size: 1.1rem;
+}
+
+.new-price {
+    color: #e76f51;
+}
+
+.discount {
+    color: #57cc99;
+}
+
+.show-corners {
+    border-radius: 15px;
+}
+
+.show-button {
+    padding: 10px 13px;
+}
+
+.form-control:focus {
+    box-shadow: none;
+}
+
+.form-select:focus {
+    box-shadow: none;
+}
+
+@media screen and (max-width: 420px) {
+    body {
+        width: 420px;
+    }
+}
+
+.btn:focus {
+    box-shadow: none !important;
+}
+
+.text-decoration-line-through {
+    text-decoration-color: black !important;
+}
+
+.card-text {
+    margin-top: -3px;
+}
+
+.underline:hover {
+    text-decoration: underline;
+}
+
+footer {
+    /* background-color: #1976d2; */
+    background-color: black;
+    font-size: 1.05rem;
+}
+
+.footer-text {
+    text-transform: uppercase;
+}
+
+.footer-name-text {
+    text-transform: none;
+}
+
+.highlight {
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    border: none;
+}
+
+.highlight:active {
+    transform: scale(1.2);
+}
+
+
+/* ------------------------------------------------------------------------------ */
+
+
+/* new page css */
+
+.new-product-heading {
+    color: white;
+    text-transform: uppercase;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-style: italic;
+}
+
+.product-heading {
+    color: white;
+    font-family: cursive;
+}
+
+
+/* ---------------------------------------------------------------------------- */
+
+
+/* review page css */
+
+.product-review-heading {
+    color: black;
+    text-transform: uppercase;
+    font-family: cursive;
+    font-style: italic;
+}
+
+
+/* ------------------------------------------------------------------------------ */
+
+
+/* cart css  */
+
+.cart-heading {
+    color: white;
+    font-family: 'Bad Script';
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-left: 10rem;
+    font-style: italic;
+}
+
+.cart-card {
+    background-color: hwb(0 100% 0% / 0.899);
+}
+
+.cart-text-1 {
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+.cart-text {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+
+/* ------------------------------------------------------------------------------------ */
+
+
+/* orders css  */
+
+.orders-heading {
+    color: white;
+    font-family: 'Bad Script';
+    text-transform: uppercase;
+    font-weight: bold;
+    font-style: italic;
+}
+
+
+/* ----------------------------------------------------------------------------------------- */
+
+
+/* sign in/up css */
+
+.sign-heading {
+    color: white;
+    font-family: cursive;
+    text-transform: uppercase;
+    /* font-weight: bold; */
+    font-style: italic;
+}
+
+.sign-text {
+    text-transform: uppercase;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.2rem;
+}

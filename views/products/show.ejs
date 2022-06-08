@@ -1,0 +1,106 @@
+<% layout('layouts/boilerplate') -%>
+
+
+    <div class="row mb-4 mx-3" style="margin-top: 90px !important;">
+        <div class="col-xxl-10 col-xl-10 col-lg-11 col-md-9 mx-auto">
+            <%- include('../partials/flash.ejs') %>
+        </div>
+        <div class="col-lg-6">
+            <div class="card product-card py-3 mx-auto shadow-lg mb-4" style="width: 25rem;">
+                <img src="<%=product.image%>" class="card-img-top mx-auto product-images" style="height: 220px; width: 220px;">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <%=product.name%>
+                    </h5>
+                    <p class="card-text desc">
+                        <%=product.desc%>
+                    </p>
+                    <p class="card-text new-price fs-4 fw-bold">
+                        <%=product.newPrice.toLocaleString('en-IN', { style: 'currency', currency: 'INR'})%>/-</p>
+                    <p class="card-text discount fs-5 fw-bold d-inline me-3">
+                        <%=product.discount%>% OFF</p>
+                    <p class="starability-result d-inline" data-rating="<%=product.avgRating%>"></p>
+                    <p class="card-text text-decoration-line-through text-muted fs-5">
+                        <%=product.oldPrice.toLocaleString('en-IN', { style: 'currency', currency: 'INR'})%>/-</p>
+                </div>
+                <div class="card-body mx-auto">
+
+                    <%if(!product.author.equals(currentUser._id)){%>
+                        <button productInfo="<%=product.name%>" netAmount="<%=product.newPrice%>" username="<%=currentUser.username%>" email="<%=currentUser.email%>" id="rzp-button1" class="btn btn-sm index-button show-button mx-1">
+                                    Buy Now
+                                </button>
+                        <form action="/user/<%=product._id%>/add" class="d-inline-block" method="post">
+                            <button class="btn btn-sm index-button show-button mx-1">Add to Cart</button>
+                        </form>
+                        <%}%>
+
+
+                            <%if(currentUser && product.author.equals(currentUser._id)){%>
+                                <a href="/products/<%=product._id%>/edit" class="btn btn-sm index-button show-button mx-1">Edit</a>
+                                <form action="/products/<%=product._id%>?_method=DELETE" method="post" class="d-inline">
+                                    <button type="submit" class="btn btn-sm index-button show-button mx-1">Delete</button>
+                                </form>
+                                <%}%>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <h1 class="display-6 text-center mt-3 product-review-heading">Leave your review</h1>
+            <div class="mt-3 mx-auto" style="width: 25rem;">
+                <form action="/products/<%=product._id%>/reviews" method="post">
+                    <fieldset class="starability-growRotate">
+                        <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked aria-label="No rating." />
+                        <input type="radio" id="first-rate1" name="rating" value="1" />
+                        <label for="first-rate1" title="Terrible">1 star</label>
+                        <input type="radio" id="first-rate2" name="rating" value="2" />
+                        <label for="first-rate2" title="Not good">2 stars</label>
+                        <input type="radio" id="first-rate3" name="rating" value="3" />
+                        <label for="first-rate3" title="Average">3 stars</label>
+                        <input type="radio" id="first-rate4" name="rating" value="4" />
+                        <label for="first-rate4" title="Very good">4 stars</label>
+                        <input type="radio" id="first-rate5" name="rating" value="5" />
+                        <label for="first-rate5" title="Amazing">5 stars</label>
+                    </fieldset>
+                    <div>
+                        <label for="comment" class="form-label product-review-heading">Comment: </label>
+                        <textarea name="comment" id="comment" rows="3" class="form-control" placeholder="Say something..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-sm btn-success mt-3">Comment</button>
+                </form>
+            </div>
+            <%for(let review of product.reviews){%>
+                <div class="card shadow-sm mt-4 mx-auto" style="width: 25rem;">
+                    <div class="card-body">
+                        <p class="card-text fst-italic" style="font-weight: 500; font-size: 1.15rem;">
+                            <%=review.reviewAuthor.username%>
+                        </p>
+                        <h5 class="card-title mb-3" style="margin-top: -9px;">
+                            <p class="starability-result" data-rating="<%=review.rating%>"></p>
+                        </h5>
+                        <p class="card-text mb-3" style="font-size: 0.95rem;">
+                            <%=review.comment%>
+                        </p>
+
+                        <%if(currentUser && ((currentUser._id.equals(product.author)) || (currentUser._id.equals(review.reviewAuthor._id)))){%>
+                            <form class="d-inline me-2" action="/products/<%=product._id%>/reviews/<%=review._id%>?_method=DELETE" method="post">
+                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                            </form>
+                            <%}%>
+                                <p class="card-text text-muted d-inline">posted on
+                                    <%=review.date.toDateString()%>
+                                </p>
+                    </div>
+                </div>
+                <%}%>
+        </div>
+    </div>
+
+    <script src="/js/cartCheckout.js"></script>
+
+    <style>
+        @media screen and (max-width: 500px) {
+            body {
+                width: 500px;
+            }
+        }
+    </style>
